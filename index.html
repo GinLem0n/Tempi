@@ -8,8 +8,7 @@
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Tempi">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
-<meta name="theme-color" content="#F2F2F7" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#F2F2F7">
 <link rel="manifest" href="manifest.json">
 <link rel="apple-touch-icon" href="icon-180.png">
 <link rel="icon" type="image/png" href="icon-192.png">
@@ -23,6 +22,8 @@
   --green: #34C759; --green-ink: #1B7F37; --green-soft: rgba(52,199,89,.18);
   --orange: #FF9500; --orange-ink: #A85800; --orange-soft: rgba(255,149,0,.18);
   --red: #FF3B30; --red-ink: #D70015; --red-soft: rgba(255,59,48,.13);
+  --indigo: #5856D6; --indigo-ink: #4B49C8; --indigo-soft: rgba(88,86,214,.14);
+  --teal: #1FA3BA; --teal-ink: #0B7488; --teal-soft: rgba(48,176,199,.16);
   --glass: rgba(255,255,255,.72); --glass-line: rgba(255,255,255,.7);
   --shadow: 0 6px 24px rgba(0,0,0,.13); --dim: rgba(0,0,0,.32);
   --sheet-bg: #F2F2F7; --sheet-card: #FFFFFF; --sheet-pressed: #E5E5EA;
@@ -41,6 +42,8 @@
   --green: #30D158; --green-ink: #30D158; --green-soft: rgba(48,209,88,.2);
   --orange: #FF9F0A; --orange-ink: #FF9F0A; --orange-soft: rgba(255,159,10,.2);
   --red: #FF453A; --red-ink: #FF6961; --red-soft: rgba(255,69,58,.2);
+  --indigo: #5E5CE6; --indigo-ink: #9B99FF; --indigo-soft: rgba(94,92,230,.26);
+  --teal: #2FB8CF; --teal-ink: #5ED3EA; --teal-soft: rgba(64,200,224,.22);
   --glass: rgba(44,44,46,.72); --glass-line: rgba(255,255,255,.1);
   --shadow: 0 6px 24px rgba(0,0,0,.5); --dim: rgba(0,0,0,.55);
   --sheet-bg: #1C1C1E; --sheet-card: #2C2C2E; --sheet-pressed: #3A3A3C;
@@ -54,6 +57,8 @@
   --green: #30D158; --green-ink: #30D158; --green-soft: rgba(48,209,88,.2);
   --orange: #FF9F0A; --orange-ink: #FF9F0A; --orange-soft: rgba(255,159,10,.2);
   --red: #FF453A; --red-ink: #FF6961; --red-soft: rgba(255,69,58,.2);
+  --indigo: #5E5CE6; --indigo-ink: #9B99FF; --indigo-soft: rgba(94,92,230,.26);
+  --teal: #2FB8CF; --teal-ink: #5ED3EA; --teal-soft: rgba(64,200,224,.22);
   --glass: rgba(44,44,46,.72); --glass-line: rgba(255,255,255,.1);
   --shadow: 0 6px 24px rgba(0,0,0,.5); --dim: rgba(0,0,0,.55);
   --sheet-bg: #1C1C1E; --sheet-card: #2C2C2E; --sheet-pressed: #3A3A3C;
@@ -136,6 +141,37 @@ svg { display: block; }
 .play i { width: 52px; height: 52px; border-radius: 50%; display: grid; place-items: center; font-size: 24px; background: var(--green-soft); color: var(--green-ink); }
 .play:active i { filter: brightness(.9); }
 .play.ring i { background: none; box-shadow: inset 0 0 0 3px var(--orange); color: var(--orange-ink); }
+.play.stopb i { background: var(--fill); color: var(--label); }
+.plain .play.stopb { width: 60px; }
+.recent { margin-top: 20px; }
+.kicon { display: none; }
+.ktitle { display: flex; align-items: center; gap: 12px; }
+.hicon { flex: none; width: 40px; height: 40px; border-radius: 11px; display: grid; place-items: center; background: var(--tint); color: var(--on-tint); }
+.hicon.proj, .fab.proj { background: var(--indigo); }
+.hicon.todo, .fab.todo { background: var(--teal); }
+.tab[data-tab="todo"][aria-current="page"] { color: var(--teal-ink); }
+#tabTodo { padding-bottom: calc(var(--tab-b) + 146px); }
+.has-mini #tabTodo { padding-bottom: calc(var(--tab-b) + 206px); }
+#tabTodo .check[aria-checked="true"] i { background: var(--teal); }
+#tabTodo .addrow label, #tabTodo .clear, #tabTodo .sw.lift .handle { color: var(--teal-ink); }
+.todo-text { display: flex; flex-direction: column; justify-content: center; gap: 1px; text-align: left; }
+.todo-text small { font-size: 13px; line-height: 18px; color: var(--label2); font-variant-numeric: tabular-nums; }
+.tab[data-tab="proj"][aria-current="page"] { color: var(--indigo-ink); }
+#tabAct .kicon, #tabProj .kicon { display: grid; flex: none; width: 34px; height: 34px; border-radius: 9px; place-items: center; background: var(--tint-soft); color: var(--tint); }
+#tabProj .kicon { background: var(--indigo-soft); color: var(--indigo-ink); }
+#tabAct .row-btn, #tabProj .row-btn { gap: 12px; }
+.recent .kicon { display: grid; flex: none; width: 30px; height: 30px; border-radius: 8px; place-items: center; background: var(--tint-soft); color: var(--tint); }
+.recent .kicon.proj { background: var(--indigo-soft); color: var(--indigo-ink); }
+.recent .row-btn { gap: 12px; }
+.recent .sec-h h2 { font: inherit; text-transform: uppercase; letter-spacing: .04em; }
+.recent .fg { min-height: 56px; }
+.recent .row-btn { min-height: 56px; padding-block: 8px; }
+.recent .stack b { font-size: 16px; }
+.recent .play { width: 52px; height: 56px; place-items: center; }
+.recent .play i { width: 34px; height: 34px; font-size: 15px; }
+.recent .play.stopb { width: 40px; }
+.recent .play.ring i { box-shadow: inset 0 0 0 2.5px var(--orange); }
+.recent .empty { padding: 16px; }
 .plain.group { background: none; border-radius: 0; overflow: visible; }
 .plain ul { border-top: .5px solid var(--sep); }
 .plain .sw, .plain .fg { background: var(--bg); }
@@ -150,6 +186,8 @@ svg { display: block; }
 .sess .stack b { font-weight: 600; }
 .sess .stack small { font-size: 15px; }
 .sess .val { font-size: 17px; }
+.live-t { color: var(--green-ink); font-weight: 600; font-variant-numeric: tabular-nums; }
+.live-t.paused { color: var(--orange-ink); }
 .field input.switch { -webkit-appearance: none; appearance: none; flex: none; position: relative; width: 51px; height: 31px; padding: 0; margin: 0 16px 0 auto; border-radius: 16px; background: var(--fill); transition: background .18s; cursor: pointer; }
 .field input.switch::before { content: ""; position: absolute; top: 2px; left: 2px; width: 27px; height: 27px; border-radius: 50%; background: #FFFFFF; box-shadow: 0 2px 6px rgba(0,0,0,.25); transition: transform .18s; }
 .field input.switch:checked { background: var(--green); }
@@ -188,8 +226,10 @@ svg { display: block; }
 
 /* Dettaglio */
 #detail { z-index: 2; }
-#detail.in { animation: push .28s cubic-bezier(.32,.72,0,1); }
-@keyframes push { from { transform: translateX(100%); } }
+#detail { box-shadow: -10px 0 30px rgba(0,0,0,.12); touch-action: pan-y; }
+.under-dim::after { content: ""; position: fixed; inset: 0; background: rgba(0,0,0,.08); pointer-events: none; }
+.kind { align-self: flex-start; display: inline-flex; align-items: center; gap: 6px; height: 28px; padding: 0 12px 0 10px; margin-bottom: -16px; border-radius: 14px; font-size: 13px; font-weight: 600; letter-spacing: .02em; text-transform: uppercase; background: var(--tint-soft); color: var(--tint); }
+.kind.proj { background: var(--indigo-soft); color: var(--indigo-ink); }
 .dt-title { width: 100%; border: 0; background: none; outline: none; resize: none; padding: 0; font-size: 34px; line-height: 1.2; font-weight: 700; letter-spacing: -.03em; display: block; overflow: hidden; }
 .stats { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); background: var(--card); border-radius: var(--r-group); }
 .stats div { padding: 12px 8px 12px 16px; min-width: 0; }
@@ -204,6 +244,9 @@ svg { display: block; }
 .notes { width: 100%; border: 0; background: none; outline: none; resize: none; padding: 12px 16px; display: block; min-height: 76px; overflow: hidden; font-size: 17px; }
 .notes::placeholder { color: var(--label2); }
 #tNote, #pNote { min-height: 48px; padding-block: 13px; }
+.title-field input { font-size: 22px; line-height: 1.2; font-weight: 600; letter-spacing: -.02em; padding: 16px 16px 14px; }
+.title-field input::placeholder { font-weight: 600; color: var(--label3); }
+#tNote { font-size: 15px; color: var(--label2); }
 
 /* Allegati */
 .att { position: relative; display: flex; flex-direction: column; gap: 10px; padding: 0 16px 12px; }
@@ -294,6 +337,7 @@ input::placeholder { color: var(--label2); }
 }
 @media (hover: hover) { .row-btn:hover, .link-row:hover { background: var(--fill); } }
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after, dialog::backdrop { animation: none !important; transition: none !important; } }
+html { background: var(--bg); }
 body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--bg); pointer-events: none; }
 html, body { -webkit-user-select: none; user-select: none; -webkit-touch-callout: none; }
 input, textarea { -webkit-user-select: text; user-select: text; }
@@ -307,7 +351,7 @@ input, textarea { -webkit-user-select: text; user-select: text; }
     <header class="nav thin"></header>
     <div class="pad">
       <div class="group" id="tBox">
-        <label class="field"><span>Attività</span><input id="tTitle" type="text" placeholder="Cosa stai facendo?" autocomplete="off" enterkeyhint="done" maxlength="120"></label>
+        <div class="field full fsep title-field"><input id="tTitle" aria-label="Attività" type="text" placeholder="Cosa stai facendo?" autocomplete="off" enterkeyhint="done" maxlength="120"></div>
         <textarea class="notes" id="tNote" rows="1" placeholder="Note" aria-label="Note" autocomplete="off" maxlength="10000"></textarea>
         <div id="tFiles"></div>
       </div>
@@ -319,9 +363,9 @@ input, textarea { -webkit-user-select: text; user-select: text; }
           <button class="circle go" id="btnMain" data-a="main" aria-label="Avvia"></button>
         </div>
       </div>
-      <div class="section">
-        <div class="sec-h big"><h2 style="font:inherit">Recenti</h2><span id="todayTimer"></span></div>
-        <div class="group plain"><ul id="recList"></ul></div>
+      <div class="section recent">
+        <div class="sec-h"><h2>Recenti</h2><span id="todayTimer"></span></div>
+        <div class="group"><ul class="noLast" id="recList"></ul></div>
         <p class="sec-f" id="sync" hidden></p>
       </div>
     </div>
@@ -330,7 +374,7 @@ input, textarea { -webkit-user-select: text; user-select: text; }
   <section class="screen" id="tabAct" aria-label="Attività">
     <header class="nav"><div class="nav-in"><span></span><span class="nav-title">Attività</span><span style="height:40px"></span></div></header>
     <div class="pad">
-      <div class="head"><h1 class="large">Attività</h1><p id="todayTotal"></p></div>
+      <div class="head"><h1 class="large ktitle"><span class="hicon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 26 26" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M9.5 6.5h13M9.5 13h13M9.5 19.5h13"/><circle cx="4.5" cy="6.5" r="1.7" fill="currentColor" stroke="none"/><circle cx="4.5" cy="13" r="1.7" fill="currentColor" stroke="none"/><circle cx="4.5" cy="19.5" r="1.7" fill="currentColor" stroke="none"/></svg></span>Attività</h1><p id="todayTotal"></p></div>
       <div class="group plain"><ul id="actList"></ul></div>
     </div>
   </section>
@@ -340,7 +384,7 @@ input, textarea { -webkit-user-select: text; user-select: text; }
       <span style="height:40px"></span>
     </div></header>
     <div class="pad">
-      <div class="head"><h1 class="large">Progetti</h1><p id="projTotal"></p></div>
+      <div class="head"><h1 class="large ktitle"><span class="hicon proj" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 26 26" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8a2 2 0 0 1 2-2h5l2.5 2.8H21a2 2 0 0 1 2 2V20a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></span>Progetti</h1><p id="projTotal"></p></div>
       <div class="group plain"><ul id="projList"></ul></div>
     </div>
   </section>
@@ -350,7 +394,7 @@ input, textarea { -webkit-user-select: text; user-select: text; }
   <section class="screen" id="tabTodo" aria-label="Da fare">
     <header class="nav"><div class="nav-in"><span></span><span class="nav-title">Da fare</span><span style="height:40px"></span></div></header>
     <div class="pad">
-      <div class="head"><h1 class="large">Da fare</h1><p id="todoCount"></p></div>
+      <div class="head"><h1 class="large ktitle"><span class="hicon todo" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 26 26" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 7l2 2 3.5-4M3.5 17l2 2 3.5-4M13 7.5h9.5M13 17.5h9.5"/></svg></span>Da fare</h1><p id="todoCount"></p></div>
       <div class="section">
         <div class="group todo">
           <ul id="todoList"></ul>
@@ -359,7 +403,7 @@ input, textarea { -webkit-user-select: text; user-select: text; }
             <input id="newTodo" type="text" placeholder="Aggiungi" enterkeyhint="done" maxlength="200">
           </form>
         </div>
-        <p class="sec-f">Tocca il testo per modificarlo. Trascina le tre linee per cambiare ordine. Premi play per avviare il timer. Scorri a sinistra per eliminare.</p>
+        <p class="sec-f">Tocca il testo per modificarlo, trascina le tre linee per riordinare, scorri a sinistra per eliminare. Il play avvia il timer e crea l'attività con lo stesso nome.</p>
       </div>
       <div class="section" id="doneWrap" hidden>
         <button class="disclose" id="doneToggle" data-a="toggleDone" aria-expanded="false" aria-controls="doneBody"><span id="doneLabel"></span><svg width="9" height="15" viewBox="0 0 9 15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1.5 1.5l6 6-6 6"/></svg></button>
@@ -373,6 +417,7 @@ input, textarea { -webkit-user-select: text; user-select: text; }
 
   <div class="mini" id="mini" hidden>
     <button class="mini-open" data-a="goTimer" aria-label="Apri il timer"><span class="dot" id="miniDot"></span><span id="miniTitle"></span><time id="miniClock"></time></button>
+    <button class="mini-btn" id="miniStop" data-a="stop" aria-label="Ferma" hidden></button>
     <button class="mini-btn" id="miniBtn" data-a="main"></button>
   </div>
 
@@ -528,6 +573,11 @@ input, textarea { -webkit-user-select: text; user-select: text; }
   });
   const viewer = document.getElementById('viewer');
   viewer.addEventListener('click', e => { if (e.target === viewer || e.target.id === 'viewerImg') viewer.close(); });
+
+  const KICON = {
+    act: '<span class="kicon" role="img" aria-label="Attività"><svg width="16" height="16" viewBox="0 0 26 26" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M9.5 6.5h13M9.5 13h13M9.5 19.5h13"/><circle cx="4.5" cy="6.5" r="1.7" fill="currentColor" stroke="none"/><circle cx="4.5" cy="13" r="1.7" fill="currentColor" stroke="none"/><circle cx="4.5" cy="19.5" r="1.7" fill="currentColor" stroke="none"/></svg></span>',
+    proj: '<span class="kicon proj" role="img" aria-label="Progetto"><svg width="16" height="16" viewBox="0 0 26 26" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8a2 2 0 0 1 2-2h5l2.5 2.8H21a2 2 0 0 1 2 2V20a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></span>'
+  };
 
   /* ---------- Formati ---------- */
   const fmtClock = ms => { const s = Math.floor(ms / 1000); return `${pad(Math.floor(s / 3600))}:${pad(Math.floor(s / 60) % 60)}:${pad(s % 60)}`; };
@@ -728,7 +778,17 @@ input, textarea { -webkit-user-select: text; user-select: text; }
     const t = S.timer, txt = fmtClock(elapsed());
     $('#clock').textContent = txt;
     $('#miniClock').textContent = txt;
+    document.querySelectorAll('[data-live]').forEach(e => { if (e.textContent !== txt) e.textContent = txt; });
+    const el = elapsed();
+    document.querySelectorAll('[data-live-total]').forEach(e => { const v = fmtClock(+e.dataset.liveTotal + el); if (e.textContent !== v) e.textContent = v; });
   }
+  // In pausa compare anche il pulsante per fermare del tutto e salvare.
+  const stopBtn = name => S.timer.status === 'paused' ? `<button class="play stopb" data-a="stop" aria-label="Ferma ${name}"><i>${ICON.stop}</i></button>` : '';
+  const liveHTML = (pre = '') => {
+    const run = S.timer.status === 'running';
+    return `<span class="live-t${run ? '' : ' paused'}">${pre}<span data-live>${fmtClock(elapsed())}</span> · ${run ? 'in corso' : 'in pausa'}</span>`;
+  };
+  const runsHere = a => S.timer.status !== 'idle' && a && (S.timer.activityId === a.id || (kindOf(a) === 'activity' && !S.timer.activityId && norm(S.timer.title) === norm(a.title)));
   setInterval(tick, 250);
   document.addEventListener('visibilitychange', () => { if (!document.hidden) { tick(); render(); flush(); } });
 
@@ -785,12 +845,13 @@ input, textarea { -webkit-user-select: text; user-select: text; }
     $('#detail').classList.toggle('on', dOn);
     const open = Object.values(S.todos).filter(t => !t.done).length, b = $('#todoBadge');
     b.hidden = !open || ui.tab === 'todo'; b.textContent = open;
-    const fab = $('#fab'), list = ui.tab === 'act' || ui.tab === 'proj';
+    const fab = $('#fab'), list = ui.tab !== 'time';
     fab.hidden = !list || dOn;
-    fab.setAttribute('aria-label', ui.tab === 'proj' ? 'Nuovo progetto' : 'Nuova attività');
+    fab.setAttribute('aria-label', ui.tab === 'proj' ? 'Nuovo progetto' : ui.tab === 'todo' ? 'Nuova cosa da fare' : 'Nuova attività');
+    fab.classList.toggle('proj', ui.tab === 'proj'); fab.classList.toggle('todo', ui.tab === 'todo');
   }
   function renderMini() {
-    const t = S.timer, show = t.status !== 'idle' && ui.tab !== 'time', m = $('#mini');
+    const t = S.timer, show = t.status !== 'idle' && ui.tab !== 'time' && !(detailOn() && runsHere(S.activities[detailId])), m = $('#mini');
     m.hidden = !show;
     $('#app').classList.toggle('has-mini', show);
     if (!show) return;
@@ -800,6 +861,7 @@ input, textarea { -webkit-user-select: text; user-select: text; }
     const b = $('#miniBtn');
     b.innerHTML = t.status === 'running' ? ICON.pause : ICON.play;
     b.setAttribute('aria-label', t.status === 'running' ? 'Metti in pausa' : 'Riprendi');
+    const ms = $('#miniStop'); const lk = linked(); ms.hidden = t.status !== 'paused' || !!(lk && lk.a.kind === 'project'); if (!ms.firstChild) ms.innerHTML = ICON.stop;
   }
   const total = a => a.sessions.reduce((n, s) => n + s.ms, 0);
   const seqSort = (x, y) => (x.createdAt || x.start) - (y.createdAt || y.start);
@@ -821,34 +883,44 @@ input, textarea { -webkit-user-select: text; user-select: text; }
       return `<li class="sw" data-id="${a.id}">
         <div class="sw-acts"><button class="del" data-a="delActivity" tabindex="-1">Elimina</button></div>
         <div class="fg">
-          <button class="row-btn" data-a="openActivity"><span class="stack"><b>${esc(a.title)}</b><small>${esc(sub)}</small></span></button>
-          ${live ? `<button class="play${running ? ' ring' : ''}" data-a="main" aria-label="${running ? 'Pausa' : 'Riprendi'} ${esc(a.title)}"><i>${running ? ICON.pause : ICON.play}</i></button>`
+          <button class="row-btn" data-a="openActivity">${KICON.act}<span class="stack"><b>${esc(a.title)}</b><small>${live ? liveHTML() : esc(sub)}</small></span></button>
+          ${live ? stopBtn(esc(a.title)) : ''}${live ? `<button class="play${running ? ' ring' : ''}" data-a="main" aria-label="${running ? 'Pausa' : 'Riprendi'} ${esc(a.title)}"><i>${running ? ICON.pause : ICON.play}</i></button>`
                  : `<button class="play" data-a="playActivity" aria-label="Avvia ${esc(a.title)}"><i>${ICON.play}</i></button>`}
         </div></li>`;
     };
     $('#actList').innerHTML = acts.length ? acts.map(actRow).join('') : `<li class="empty">${wait || 'Nessuna attività. Premi + per crearne una.'}</li>`;
-    $('#recList').innerHTML = acts.length ? acts.slice(0, 5).map(actRow).join('') : `<li class="empty">${wait || 'Nessuna attività. Scrivi cosa stai facendo e avvia il timer.'}</li>`;
     const projMs = projs.reduce((m, a) => m + total(a), 0);
     $('#projTotal').textContent = projs.length ? `${plural(projs.length, 'progetto', 'progetti')}${projMs ? ' · ' + fmtDur(projMs) : ''}` : '';
-    $('#projList').innerHTML = !projs.length ? `<li class="empty">${wait || 'Nessun progetto. Premi + per crearne uno.'}</li>` : projs.map(a => {
+    const projRow = a => {
       const n = a.sessions.length, sum = total(a), live = S.timer.status !== 'idle' && S.timer.activityId === a.id;
       const sub = n ? `${sum ? fmtDur(sum) + ' · ' : ''}${plural(n, 'fase', 'fasi')}` : 'Nessuna fase';
       return `<li class="sw" data-id="${a.id}"><div class="sw-acts"><button class="del" data-a="delActivity" tabindex="-1">Elimina</button></div>
-        <div class="fg"><button class="row-btn" data-a="openActivity" style="padding-right:4px"><span class="stack"><b>${esc(a.title)}</b><small>${esc(sub)}</small></span>${live ? `<span class="dot${running ? '' : ' paused'}"></span>` : ''}</button></div></li>`;
-    }).join('');
+        <div class="fg"><button class="row-btn" data-a="openActivity" style="padding-right:4px">${KICON.proj}<span class="stack"><b>${esc(a.title)}</b><small>${live ? liveHTML((() => { const l = linked(); return l && l.a.id === a.id ? codeOf(l.a, l.s) + ' · ' : ''; })()) : esc(sub)}</small></span></button>${live
+          ? `<button class="play${running ? ' ring' : ''}" data-a="main" aria-label="${running ? 'Pausa' : 'Riprendi'} ${esc(a.title)}"><i>${running ? ICON.pause : ICON.play}</i></button>`
+          : `<button class="play" data-a="playProject" aria-label="Avvia ${esc(a.title)}"><i>${ICON.play}</i></button>`}</div></li>`;
+    };
+    $('#projList').innerHTML = !projs.length ? `<li class="empty">${wait || 'Nessun progetto. Premi + per crearne uno.'}</li>` : projs.map(projRow).join('');
+    const recent = [...acts, ...projs].sort((x, y) => Math.max(lastAt(y), y.createdAt) - Math.max(lastAt(x), x.createdAt)).slice(0, 6);
+    $('#recList').innerHTML = recent.length ? recent.map(a => a.kind === 'project' ? projRow(a) : actRow(a)).join('') : `<li class="empty">${wait || 'Niente di recente. Scrivi cosa stai facendo e avvia il timer.'}</li>`;
   }
   const todoSorted = done => Object.values(S.todos).filter(t => !!t.done === done).sort((a, b) => done ? (b.doneAt || 0) - (a.doneAt || 0) : a.order - b.order);
   function renderTodos() {
     const open = todoSorted(false), done = todoSorted(true);
     const active = S.timer.status !== 'idle' ? norm(S.timer.title) : null, running = S.timer.status === 'running';
     const todoPlay = (t, act, run) => act === norm(t.text)
-      ? `<button class="play${run ? ' ring' : ''}" data-a="main" aria-label="${run ? 'Pausa' : 'Riprendi'} ${esc(t.text)}"><i>${run ? ICON.pause : ICON.play}</i></button>`
+      ? `${stopBtn(esc(t.text))}<button class="play${run ? ' ring' : ''}" data-a="main" aria-label="${run ? 'Pausa' : 'Riprendi'} ${esc(t.text)}"><i>${run ? ICON.pause : ICON.play}</i></button>`
       : `<button class="play" data-a="todoStart" aria-label="Avvia il timer per ${esc(t.text)}"><i>${ICON.play}</i></button>`;
+    // Sotto il testo: il tempo che scorre se è in corso, altrimenti quanto è già stato registrato.
+    const todoMeta = (t, act) => {
+      if (act === norm(t.text)) return `<small>${liveHTML()}</small>`;
+      const a = byTitle(t.text), ms = a ? total(a) : 0;
+      return ms ? `<small>${fmtDur(ms)} registrati</small>` : '';
+    };
     $('#todoCount').textContent = open.length ? plural(open.length, 'cosa da fare', 'cose da fare') : 'Tutto fatto';
     $('#todoList').innerHTML = open.map(t => `<li class="sw" data-id="${t.id}">
       <div class="sw-acts"><button class="del" data-a="todoDel" tabindex="-1">Elimina</button></div>
       <div class="fg"><button class="check" role="checkbox" aria-checked="false" data-a="todoToggle" aria-label="Segna come fatto: ${esc(t.text)}"><i>${ICON.check}</i></button>
-      <button class="todo-text" data-a="todoEdit">${esc(t.text)}</button>
+      <button class="todo-text" data-a="todoEdit"><span>${esc(t.text)}</span>${todoMeta(t, active)}</button>
       ${todoPlay(t, active, running)}
       <button class="handle" aria-label="Sposta ${esc(t.text)}. Usa le frecce su e giù.">${ICON.grip}</button></div></li>`).join('');
     $('#doneWrap').hidden = !done.length;
@@ -858,14 +930,14 @@ input, textarea { -webkit-user-select: text; user-select: text; }
     $('#doneList').innerHTML = done.map(t => `<li class="sw is-done" data-id="${t.id}">
       <div class="sw-acts"><button class="del" data-a="todoDel" tabindex="-1">Elimina</button></div>
       <div class="fg"><button class="check" role="checkbox" aria-checked="true" data-a="todoToggle" aria-label="Riporta tra le cose da fare: ${esc(t.text)}"><i>${ICON.check}</i></button>
-      <span class="todo-text">${esc(t.text)}</span></div></li>`).join('');
+      <span class="todo-text"><span>${esc(t.text)}</span>${todoMeta(t, null)}</span></div></li>`).join('');
   }
   function autoGrow(el) { el.style.height = 'auto'; el.style.height = el.scrollHeight + 'px'; }
   function renderDetail() {
     const el = $('#detail');
     if (!detailId) { el.innerHTML = ''; return; }
     const a = S.activities[detailId];
-    if (!a) { detailId = null; el.innerHTML = ''; renderTabs(); renderMini(); return; }
+    if (!a) { detailId = null; el.innerHTML = ''; resetStack(); renderTabs(); renderMini(); return; }
     const n = a.sessions.length, sum = total(a);
     const isP = a.kind === 'project', T = term(a);
     const curr = S.timer.status !== 'idle' ? S.timer.sessionId : '';
@@ -875,14 +947,20 @@ input, textarea { -webkit-user-select: text; user-select: text; }
       const sub = (on ? (run ? 'In corso' : 'In pausa') : s.start ? `${fmtDur(s.ms)} · ${fmtRel(s.start)}, ${fmtTime(s.start)}` : 'Da avviare') + (nf ? ` · ${plural(nf, 'allegato', 'allegati')}` : '');
       const play = on ? `<button class="play${run ? ' ring' : ''}" data-a="main" aria-label="${run ? 'Pausa' : 'Riprendi'} ${name}"><i>${run ? ICON.pause : ICON.play}</i></button>`
         : `<button class="play" data-a="playPhase" aria-label="Avvia ${name}"><i>${ICON.play}</i></button>`;
-      return `<li class="sw" data-sid="${s.id}"><div class="fg"><button class="row-btn" data-a="editSession" aria-label="Apri ${name}, ${esc(sub)}"><span class="stack"><b>${name}</b><small>${esc(sub)}</small></span></button>${play}</div></li>`;
+      return `<li class="sw" data-sid="${s.id}"><div class="fg"><button class="row-btn" data-a="editSession" aria-label="Apri ${name}, ${esc(sub)}"><span class="stack"><b>${name}</b><small>${on ? liveHTML() : esc(sub)}</small></span></button>${on ? stopBtn(name) : ''}${play}</div></li>`;
     };
-    const groups = n ? `<div class="section"><div class="sec-h"><span>${T.Many}</span></div><div class="group sess phase"><ul class="noLast">${[...a.sessions].sort(seqSort).map(row).join('')}</ul></div></div>`
+    // Sessione nuova partita dal Timer: compare in fondo all'elenco finché non la salvi.
+    const fresh = runsHere(a) && !S.timer.sessionId, run0 = S.timer.status === 'running';
+    const freshRow = fresh ? `<li class="sw"><div class="fg"><button class="row-btn" data-a="goTimer" aria-label="Vai al timer"><span class="stack"><b>${T.cap} ${n + 1}</b><small>${liveHTML()}</small></span></button>${stopBtn('sessione')}<button class="play${run0 ? ' ring' : ''}" data-a="main" aria-label="${run0 ? 'Pausa' : 'Riprendi'}"><i>${run0 ? ICON.pause : ICON.play}</i></button></div></li>` : '';
+    const groups = n || fresh ? `<div class="section"><div class="sec-h"><span>${T.Many}</span></div><div class="group sess phase"><ul class="noLast">${[...a.sessions].sort(seqSort).map(row).join('')}${freshRow}</ul></div></div>`
       : `<div class="group"><p class="empty">Nessuna ${T.one}. Aggiungi la prima per far partire il timer.</p></div>`;
-    el.innerHTML = `<header class="nav"><div class="nav-in"><button class="back" data-a="closeDetail" style="justify-self:start">${ICON.back}<span>${isP ? 'Progetti' : 'Attività'}</span></button><span class="nav-title">${esc(a.title)}</span><span></span></div></header>
+    el.innerHTML = `<header class="nav"><div class="nav-in"><span></span><span class="nav-title">${esc(a.title)}</span><span></span></div></header>
       <div class="pad">
+        <span class="kind${isP ? ' proj' : ''}">${isP
+          ? '<svg width="15" height="15" viewBox="0 0 26 26" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8a2 2 0 0 1 2-2h5l2.5 2.8H21a2 2 0 0 1 2 2V20a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>Progetto'
+          : '<svg width="15" height="15" viewBox="0 0 26 26" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M9.5 6.5h13M9.5 13h13M9.5 19.5h13"/><circle cx="4.5" cy="6.5" r="1.6" fill="currentColor" stroke="none"/><circle cx="4.5" cy="13" r="1.6" fill="currentColor" stroke="none"/><circle cx="4.5" cy="19.5" r="1.6" fill="currentColor" stroke="none"/></svg>Attività'}</span>
         <textarea class="dt-title" id="dtTitle" rows="1" data-keep aria-label="Titolo dell'attività" maxlength="120">${esc(a.title)}</textarea>
-        <div class="stats"><div><small>Totale</small><b>${sum ? fmtDur(sum) : '–'}</b></div><div><small>${T.Many}</small><b>${n}</b></div></div>
+        <div class="stats"><div><small>Totale</small>${runsHere(a) ? `<b class="live-t${S.timer.status === 'running' ? '' : ' paused'}" data-live-total="${sum}">${fmtClock(sum + elapsed())}</b>` : `<b>${sum ? fmtDur(sum) : '–'}</b>`}</div><div><small>${T.Many}</small><b>${fresh ? n + 1 : n}</b></div></div>
         <div class="group"><textarea class="notes" id="dtNotes" data-keep placeholder="Note${isP ? ' sul progetto' : " sull'attività"}" aria-label="Note" maxlength="4000">${esc(a.notes)}</textarea>${filesHTML(a.files, 'detail')}</div>
         ${groups}
         <div class="group noLast"><button class="link-row" data-a="addSession">${ICON.plus}<span>Aggiungi ${T.one}</span></button></div>
@@ -903,14 +981,76 @@ input, textarea { -webkit-user-select: text; user-select: text; }
 
   /* ---------- Navigazione ---------- */
   function go(tab) { ui.tab = tab; writeLS(KEY.ui, ui); renderTabs(); renderMini(); }
+  /* Navigazione a pila come su iOS: la pagina entra da destra, la lista scivola un po' a sinistra;
+     tornando indietro (pulsante o trascinando dal bordo sinistro) succede il contrario. */
+  const EASE = 'transform .34s cubic-bezier(.32,.72,0,1)';
+  const reduced = () => matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const underEl = () => $(SCREENS[ui.tab]);
+  let closing = false;
+  function resetStack() {
+    const el = $('#detail');
+    el.style.transition = el.style.transform = '';
+    Object.values(SCREENS).forEach(sel => { const u = $(sel); u.style.transition = u.style.transform = ''; u.classList.remove('under-dim'); });
+  }
   function openDetail(id) {
     detailId = id;
-    const el = $('#detail');
-    el.hidden = false; el.classList.remove('in'); void el.offsetWidth; el.classList.add('in');
-    el.scrollTop = 0;
+    const el = $('#detail'), under = underEl();
+    el.hidden = false; el.scrollTop = 0;
     render();
+    if (reduced()) return;
+    el.style.transition = 'none'; el.style.transform = 'translateX(100%)';
+    under.style.transition = 'none';
+    void el.offsetWidth;
+    el.style.transition = EASE; el.style.transform = 'translateX(0)';
+    under.style.transition = EASE; under.style.transform = 'translateX(-25%)'; under.classList.add('under-dim');
   }
-  function closeDetail() { detailId = null; $('#detail').blur?.(); render(); }
+  function closeDetail(animate = true) {
+    const el = $('#detail');
+    if (!detailId) { resetStack(); return; }
+    if (!animate || el.hidden || reduced()) { detailId = null; resetStack(); render(); return; }
+    if (closing) return;
+    closing = true;
+    const under = underEl();
+    el.style.transition = EASE; el.style.transform = 'translateX(100%)';
+    under.style.transition = EASE; under.style.transform = 'translateX(0)'; under.classList.remove('under-dim');
+    setTimeout(() => { closing = false; detailId = null; resetStack(); render(); }, 340);
+  }
+  // Trascinando dal bordo sinistro si torna indietro.
+  {
+    const det = $('#detail');
+    let edge = null;
+    det.addEventListener('pointerdown', e => {
+      if (closing || e.button || e.target.closest('input, textarea, .att-btn')) return;
+      edge = { x: e.clientX, y: e.clientY, id: e.pointerId, on: false, dx: 0, t: Date.now() };
+    });
+    det.addEventListener('pointermove', e => {
+      if (!edge || e.pointerId !== edge.id) return;
+      const dx = e.clientX - edge.x, dy = e.clientY - edge.y, under = underEl();
+      if (!edge.on) {
+        if (Math.abs(dy) > 10 && Math.abs(dy) > dx) { edge = null; return; }
+        if (dx < 12 || dx < Math.abs(dy) * 1.5) return;
+        edge.on = true;
+        try { det.setPointerCapture(e.pointerId); } catch {}
+        det.style.transition = under.style.transition = 'none';
+      }
+      edge.dx = Math.max(0, dx); edge.t2 = Date.now();
+      det.style.transform = `translateX(${edge.dx}px)`;
+      under.style.transform = `translateX(${-25 + 25 * Math.min(1, edge.dx / innerWidth)}%)`;
+    });
+    const end = e => {
+      if (!edge || e.pointerId !== edge.id) return;
+      const g = edge; edge = null;
+      if (!g.on) return;
+      suppressClick = true; setTimeout(() => { suppressClick = false; }, 60);
+      const speed = g.dx / Math.max(1, (g.t2 || Date.now()) - g.t);
+      if (g.dx > innerWidth / 3 || speed > .6) { closeDetail(); return; }
+      const under = underEl();
+      det.style.transition = under.style.transition = EASE;
+      det.style.transform = 'translateX(0)'; under.style.transform = 'translateX(-25%)';
+    };
+    det.addEventListener('pointerup', end);
+    det.addEventListener('pointercancel', end);
+  }
   /* Se chi ospita la pagina ha già lasciato gli spazi di sistema, non vanno sommati di nuovo. */
   function calibrate() {
     const long = Math.max(screen.width, screen.height), short = Math.min(screen.width, screen.height);
@@ -1079,11 +1219,12 @@ input, textarea { -webkit-user-select: text; user-select: text; }
     putTimer({ ...IDLE });
     closeSheet();
     const nt = nextTitle, nl = nextLink; nextTitle = null; nextLink = null;
-    if (nt !== null) { const now = Date.now(); putTimer({ ...IDLE, status: 'running', title: nt, ...(nl || {}), startedAt: now, segStart: now }); if (!nl) { closeDetail(); linkTimerActivity(); } }
+    if (nt !== null) { const now = Date.now(); putTimer({ ...IDLE, status: 'running', title: nt, ...(nl || {}), startedAt: now, segStart: now }); if (!nl) { closeDetail(false); linkTimerActivity(); } }
     toast(msg, undo);
   }
   let newKind = 'activity';
   function newItemSheet() {
+    if (ui.tab === 'todo') { const i = $('#newTodo'); i.focus(); i.scrollIntoView({ block: 'center', behavior: 'smooth' }); return; }
     sheetFiles = [];
     newKind = ui.tab === 'proj' ? 'project' : 'activity';
     const proj = newKind === 'project';
@@ -1204,7 +1345,7 @@ input, textarea { -webkit-user-select: text; user-select: text; }
       if (t === ui.tab) { if (detailOn()) closeDetail(); else toTop($(SCREENS[t])); }
       go(t);
     },
-    goTimer: () => { closeDetail(); go('time'); },
+    goTimer: () => { closeDetail(false); go('time'); },
     main: mainAction,
     stop: stopFlow,
     newItem: newItemSheet,
@@ -1229,12 +1370,20 @@ input, textarea { -webkit-user-select: text; user-select: text; }
     playActivity: b => startTimer(S.activities[b.closest('.sw').dataset.id].title),
     closeDetail,
     delActivity: b => removeActivity(b.closest('.sw').dataset.id),
-    delActivityDetail: () => { const id = detailId; closeDetail(); removeActivity(id); },
+    delActivityDetail: () => { const id = detailId; closeDetail(); setTimeout(() => removeActivity(id), 350); },
     editSession: b => sessionSheet(b.closest('.sw').dataset.sid),
     addSession: () => sessionSheet(null),
     startSession: () => {
       const a = S.activities[detailId], s = commitSessionEdit();
       if (s) startTimer(a.title, false, { activityId: a.id, sessionId: s.id, note: s.note });
+    },
+    // Play sul progetto: riprende l'ultima fase lavorata, altrimenti la prima da avviare.
+    playProject: b => {
+      const a = S.activities[b.closest('.sw').dataset.id], list = [...a.sessions].sort(seqSort);
+      const last = list.filter(x => x.start).sort((x, y) => y.end - x.end)[0], next = last || list.find(x => !x.start) || list[0];
+      if (!next) { openDetail(a.id); toast('Aggiungi prima una fase'); return; }
+      startTimer(a.title, true, { activityId: a.id, sessionId: next.id, note: next.note });
+      if (!S.timer.sessionId || S.timer.sessionId === next.id) toast(`Avviata ${codeOf(a, next)} · ${sessionName(a, next)}`);
     },
     playPhase: b => {
       const a = S.activities[detailId], s = a.sessions.find(x => x.id === b.closest('.sw').dataset.sid);
@@ -1429,6 +1578,13 @@ input, textarea { -webkit-user-select: text; user-select: text; }
   });
 
   boot();
+  // La barra di stato prende il colore dello sfondo del tema in uso, chiaro o scuro.
+  const syncThemeColor = () => {
+    const c = getComputedStyle(document.documentElement).getPropertyValue('--bg').trim() || '#F2F2F7';
+    document.querySelectorAll('meta[name="theme-color"]').forEach(m => m.setAttribute('content', c));
+  };
+  syncThemeColor();
+  try { matchMedia('(prefers-color-scheme: dark)').addEventListener('change', syncThemeColor); } catch {}
   try { if (navigator.storage && navigator.storage.persist) navigator.storage.persist(); } catch {}
   if ('serviceWorker' in navigator && location.protocol.startsWith('http')) navigator.serviceWorker.register('sw.js').catch(() => {});
 })();
